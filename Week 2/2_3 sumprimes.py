@@ -1,4 +1,6 @@
-def isprime(num):
+
+#Problem 2.3
+def isprime(num):   #Check if number is prime 
     if num < 0:
         return False
     if num == 2 or num == 1:
