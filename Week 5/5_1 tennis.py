@@ -82,10 +82,13 @@ for item in stats.keys():
 #print(stats_list)
  
 #define key for the sort function
+
+'''alternative to the lambda function
 def custom(li):
     return li[1:len(li)-2] #last two keys are to be sorted as ascending
+'''
 
-fin_list = sorted(stats_list, key = custom ,reverse = True)
+fin_list = sorted(stats_list, key = lambda x: x[1:len(x)-2] ,reverse = True)
 
 #Finally obtain the stats as required
 for item in fin_list:
