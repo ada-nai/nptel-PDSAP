@@ -67,7 +67,7 @@ while(True):
     
 #Print out the result as desired
 #Though the stats dict is computed, it is still not sorted,
-# hence the key vals are appended to a list of list 
+# hence the key values are appended to a list of list 
 stats_list = []
 ite = 0
 for item in stats.keys():
