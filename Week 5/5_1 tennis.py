@@ -1,3 +1,13 @@
+'''
+Keys for the nested dictionary stats:
+1: 'w_5'
+2: 'w_3'
+3: 'w_sets'
+4: 'w_games'
+5: 'l_sets'
+6: 'l_games'
+
+'''
 
 #Problem 5.1
 stats = {}
@@ -16,13 +26,13 @@ while(True):
         score_str = result[2].split(',')
         # Check if the player name is present in stats dic, if not add them with required parameters
         if result[0] not in stats.keys():
-            stats[result[0]] = {'w_5':0, 'w_3':0, 'w_sets':0, 'w_games':0, 'l_sets' :0, 'l_games':0}
+            stats[result[0]] = {1:0, 2:0, 3:0, 4:0, 5 :0, 6:0}
         if result[1] not in stats.keys():
-            stats[result[1]] = {'w_5':0, 'w_3':0, 'w_sets':0, 'w_games':0, 'l_sets' :0, 'l_games':0}
+            stats[result[1]] = {1:0, 2:0, 3:0, 4:0, 5 :0, 6:0}
         if len(score_str) <= 3:
-            stats[result[0]]['w_3'] += 1
+            stats[result[0]][2] += 1
         else:
-            stats[result[0]]['w_5'] += 1 
+            stats[result[0]][1] += 1 
         
         #Evaluate the set/game stats by splitting scores
 
@@ -48,10 +58,10 @@ while(True):
             else:
                 s_s_w +=1
         #(f_s_w, s_s_w)
-        stats[result[0]]['w_sets'] += f_s_w
-        stats[result[0]]['l_sets'] += s_s_w
-        stats[result[1]]['w_sets'] += s_s_w
-        stats[result[1]]['l_sets'] += f_s_w
+        stats[result[0]][3] += f_s_w
+        stats[result[0]][5] += s_s_w
+        stats[result[1]][3] += s_s_w
+        stats[result[1]][5] += f_s_w
 
         # Compute games won/lost
         f_g_w = 0 #first player games won
@@ -60,10 +70,10 @@ while(True):
              f_g_w += item[0]
              s_g_w += item[1]
 
-        stats[result[0]]['w_games'] += f_g_w
-        stats[result[0]]['l_games'] += s_g_w
-        stats[result[1]]['w_games'] += s_g_w
-        stats[result[1]]['l_games'] += f_g_w
+        stats[result[0]][4] += f_g_w
+        stats[result[0]][6] += s_g_w
+        stats[result[1]][4] += s_g_w
+        stats[result[1]][6] += f_g_w
     
 #Print out the result as desired
 #Though the stats dict is computed, it is still not sorted,
@@ -93,6 +103,9 @@ fin_list = sorted(stats_list, key = lambda x: x[1:len(x)-2] ,reverse = True)
 #Finally obtain the stats as required
 for item in fin_list:
     for ele in item:
-        print(ele,end = " ")
-    print()
+        if ele != item[-1]:
+
+            print(ele,end = " ")
+        else:
+            print(ele)
 #print(fin_list)
